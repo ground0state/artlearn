@@ -1,6 +1,22 @@
+![](https://img.shields.io/badge/dynamic/json.svg?label=version&colorB=5f9ea0&query=$.version&uri=https://raw.githubusercontent.com/ground0state/artlearn/master/package.json&style=plastic)
+[![Downloads](https://pepy.tech/badge/artlearn)](https://pepy.tech/project/artlearn)
+
 # artlearn
 
 artlearn is a set of algorithms for Adoptive resonance theory.
+
+This contains these techniques.
+
+- ART1
+- ART2
+- ART2A
+- Bayesian ART
+- Fuzzy ART
+- SFAM
+
+and my original,
+
+- L2ART
 
 ## Dependencies
 
@@ -15,7 +31,49 @@ You also need Matplotlib >= 3.2.2 to run the demo and pytest >= 6.2.5 to run the
 ## install
 
 ```bash
-pip install git+https://github.com/ground0state/artlearn
+pip install artlearn
+```
+
+## USAGE
+
+We have posted a usage example in the demo folder.
+
+For example...
+
+### Fuzzy ART
+
+```python
+from artlearn import FuzzyART
+
+
+clf = FuzzyART(max_iter=100, max_class=100, rho=0.72, alpha=1e-5, beta=0.1)
+clf.fit(X)
+
+labels = clf.labels_
+```
+
+### Bayesian ART
+
+```python
+from artlearn import BayesianART
+
+
+clf = BayesianART(max_iter=3, max_class=100, rho=0.01, sigma=0.05, max_hyper_volume=0.07)
+clf.fit(X)
+
+labels = clf.labels_
+```
+
+### SFAM
+
+```python
+from artlearn import SFAM
+
+
+clf = SFAM(max_iter=100, max_class=100, rho=0.9, alpha=1e-5, beta=0.1)
+clf.fit(X, y)
+
+y_pred = clf.predict(X)
 ```
 
 ## License
